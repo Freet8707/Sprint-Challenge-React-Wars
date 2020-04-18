@@ -6,9 +6,10 @@ const CharacterCard = (props) => {
     const CardDiv = styled.div`
         display: flex;
         flex-direction: column;
-        background: rgba(42, 34, 35, .3);
+        background: rgba(88, 108, 221, .3);
         width: 300px;
-        height: 400px;  
+        height: 450px;
+        padding: 0 10px 0 10px;  
         margin: 25px 10px;      
     `;
     const NameHeader = styled.section`
@@ -16,12 +17,13 @@ const CharacterCard = (props) => {
         flex-direction: row;
         justify-content: space-between;
         width: 100%;
-        height: 30px;
+        height: 80px;
+        color: #F9F675;
         `;
     const CharDescription = styled.section`
         display: flex;
         flex-direction: row;
-        justify-content: flex-end;
+        justify-content: space-between;
         width: 100%;
         height: 70px;
         `;
@@ -37,12 +39,12 @@ const CharacterCard = (props) => {
     return (
         <CardDiv>
             <NameHeader>
-                <h3>{props.charName}</h3>
-                <h3>{props.status}</h3>
+                <h4>{props.charName}</h4>
+                <h4>{props.status}</h4>
             </NameHeader>
             <CharDescription>
                 <h4>{props.species}</h4>
-                <h4>{props.gender}<br></br>{props.origin}</h4>
+                <h6>{props.gender}<br></br>{props.origin}</h6>
             </CharDescription>
             <ImgWrapper>
                 <Image src={props.image} alt={props.charName} />

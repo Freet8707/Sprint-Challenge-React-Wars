@@ -1,5 +1,10 @@
 .App {
-  text-align: center;
+  text-align: center;  
+  background-image: url('./images/rm-bg.jpg');
+  /* background-size: cover/; */
+  background-attachment: fixed;
+  background-size: auto;
+  background-position: center;
 }
 .Header {
   color: #443e3e;

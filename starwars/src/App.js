@@ -25,14 +25,20 @@ const App = () => {
     })
   }, []);
   ;
+  const CardWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    `;
   return (
     <div className="App">
-      <h1>Characters</h1>
-      <div>
+      <h1 className="Header">Characters</h1>
+      <CardWrapper>
         {characters.map(characters =>{
           return <CharacterCard key={characters.id} charName={characters.name} status={characters.status} species={characters.species} gender={characters.gender} origin={characters.origin.name} image={characters.image} />
         })}        
-      </div>
+      </CardWrapper>
     </div>
   );
 }
