@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
+import styled from 'styled-components';
 import CharacterCard from './components/Character'
 
 const App = () => {
@@ -17,16 +18,19 @@ const App = () => {
     .get("https://rickandmortyapi.com/api/character")
     .then(response => {
       console.log(response);      
-      setCharacters(response.data.results)
+      setCharacters(response.data.results);
+    })
+    .catch(error => {
+      console.log("error ", error)
     })
   }, []);
-  console.log(characters);
+  ;
   return (
-    <div>
+    <div className="App">
       <h1>Characters</h1>
       <div>
         {characters.map(characters =>{
-          return <CharacterCard key={characters.id} charName={characters.name} status={characters.status} species={characters.species} gender={characters.gender} origin={characters.origin.name} image={characters.location.image} />
+          return <CharacterCard key={characters.id} charName={characters.name} status={characters.status} species={characters.species} gender={characters.gender} origin={characters.origin.name} image={characters.image} />
         })}        
       </div>
     </div>
