@@ -6,7 +6,7 @@ const CharacterCard = (props) => {
     const CardDiv = styled.div`
         display: flex;
         flex-direction: column;
-        background: rgba(88, 108, 221, .3);
+        background: rgba(88, 108, 221, .8);
         width: 300px;
         height: 450px;
         padding: 0 10px 0 10px;  
