@@ -4,6 +4,12 @@ import axios from 'axios'
 import styled from 'styled-components'
 import './App.css'
 
+const FlexDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+`;
 
 const App = () => {
   const [pokemon, setPokemon] = useState([])
@@ -29,9 +35,11 @@ const App = () => {
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
-        {pokemon.map(item => {
+        <FlexDiv>
+          {pokemon.map(item => {
           return <Card character={item} />
-        })}
+          })}
+        </FlexDiv>
     </div>
   );
 }
