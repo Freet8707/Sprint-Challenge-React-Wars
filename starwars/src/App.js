@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import Card from './components/Character'
 import axios from 'axios'
-import './App.css';
+import styled from 'styled-components'
+import './App.css'
 
 
 const App = () => {
-  const [waterPokemon, setWaterPokemon] = useState('')
+  const [pokemon, setPokemon] = useState([])
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
 
@@ -12,19 +14,24 @@ const App = () => {
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
   useEffect(() => {
-    const waterCreatures = []
-    axios.get('https://pokeapi.co/api/v2/pokemon?limit=5&offset=200/pokemon-habitat/9')
+    const waterPokemon = []
+    axios.get('https://pokeapi.co/api/v2/pokemon-habitat/9')
     .then(response => {
-      // console.log(response)
-      waterCreatures.push(response.data.results)
-      setWaterPokemon(waterCreatures)
+      console.log(response)
+      for(let i = 0; i < 10; i++){
+        waterPokemon.push(response.data.pokemon_species[i])
+      }
+      setPokemon(waterPokemon)
     })
     .catch(error => console.log('error', error))
   }, [])
-  console.log(waterPokemon)
+  console.log(pokemon)
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
+        {pokemon.map(item => {
+          return <Card character={item} />
+        })}
     </div>
   );
 }
