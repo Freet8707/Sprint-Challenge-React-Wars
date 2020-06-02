@@ -21,7 +21,7 @@ const PokeButton = styled.button`
   font-weight: 550;
   letter-spacing: .5px;
   text-align: center;
-  background: #83C6D5;
+  background: rgba(131, 198, 213, .8);
   &:hover {
     color: #C33042;
   }
