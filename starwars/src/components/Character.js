@@ -13,6 +13,7 @@ const CardDiv = styled.div`
         width: 350px;
         height: 350px;
         object-fit: scale;
+        flex-shrink: 2;
     }
 `;
 
