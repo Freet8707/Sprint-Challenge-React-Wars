@@ -1,5 +1,5 @@
 // Write your Character component here
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 const CardDiv = styled.div`
@@ -15,12 +15,8 @@ const CardDiv = styled.div`
         object-fit: scale;
     }
 `;
+
 export default function Card(props) {
-    // const [pokePic, setPokePic] = useState('')
-    // if (props.character.name === 'squirtle'){
-    //     setPokePic({Squirtle})
-    // }
-    // console.log(props)
     return(
         <CardDiv>
             <h1>{props.character.name}</h1>

@@ -26,18 +26,15 @@ const PokeButton = styled.button`
 
 const App = () => {
   const [pokemon, setPokemon] = useState([])
+  //initial state set to water pokemon habitat parameter
   const [habitatButton, setHabitatButton] = useState('9')
-  // Try to think through what state you'll need for this app before starting. Then build out
-  // the state properties here.
 
-  // Fetch characters from the API in an effect hook. Remember, anytime you have a 
-  // side effect in a component, you want to think about which state and/or props it should
-  // sync up with, if any.
   useEffect(() => {
     const waterPokemon = []
     axios.get(`https://pokeapi.co/api/v2/pokemon-habitat/${habitatButton}`)
     .then(response => {
       console.log(response)
+      //set limit to the amount of pokemon returned
       for(let i = 0; i < 10; i++){
         waterPokemon.push(response.data.pokemon_species[i])
       }
@@ -46,6 +43,7 @@ const App = () => {
     .catch(error => console.log('error', error))
   }, [habitatButton])
   console.log(pokemon)
+
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
@@ -54,7 +52,7 @@ const App = () => {
         <PokeButton onClick={()=>{setHabitatButton('9')}}>Water Pokemon!</PokeButton>
         <FlexDiv>
           {pokemon.map(item => {
-          return <Card character={item} />
+          return <Card character={item} key={item.url}/>
           })}
         </FlexDiv>
     </div>
