@@ -11,8 +11,22 @@ const FlexDiv = styled.div`
   justify-content: space-evenly;
 `;
 
+const PokeButton = styled.button`
+  width: 160px;
+  height: 30px;
+  margin: 0 40px 20px 0;
+  border-color: 2px #5BBE6E;
+  border-radius: 10px;
+  text-align: center;
+  background: #83C6D5;
+  &:hover {
+    color: #C33042;
+  }
+`;
+
 const App = () => {
   const [pokemon, setPokemon] = useState([])
+  const [habitatButton, setHabitatButton] = useState('9')
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
 
@@ -21,7 +35,7 @@ const App = () => {
   // sync up with, if any.
   useEffect(() => {
     const waterPokemon = []
-    axios.get('https://pokeapi.co/api/v2/pokemon-habitat/9')
+    axios.get(`https://pokeapi.co/api/v2/pokemon-habitat/${habitatButton}`)
     .then(response => {
       console.log(response)
       for(let i = 0; i < 10; i++){
@@ -30,11 +44,14 @@ const App = () => {
       setPokemon(waterPokemon)
     })
     .catch(error => console.log('error', error))
-  }, [])
+  }, [habitatButton])
   console.log(pokemon)
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
+        <PokeButton onClick={()=>{setHabitatButton('2')}}>Forest Pokemon!</PokeButton>
+        <PokeButton onClick={()=>{setHabitatButton('8')}}>Urban Pokemon!</PokeButton>
+        <PokeButton onClick={()=>{setHabitatButton('9')}}>Water Pokemon!</PokeButton>
         <FlexDiv>
           {pokemon.map(item => {
           return <Card character={item} />
