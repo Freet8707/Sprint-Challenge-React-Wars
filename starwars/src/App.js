@@ -15,8 +15,8 @@ const PokeButton = styled.button`
   width: 160px;
   height: 30px;
   margin: 0 40px 20px 0;
-  border-color: 2px #5BBE6E;
   border-radius: 10px;
+  border: 2px solid #02535C;
   text-align: center;
   background: #83C6D5;
   &:hover {
